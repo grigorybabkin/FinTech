@@ -21,18 +21,24 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func GETHandler(w http.ResponseWriter, r *http.Request) {
-
 	shortURL := r.URL.Path[1:]
 	//:= r.URL.Query().Get("short_url")
 	var fullURL string
+	var found bool
 	switch Storage {
 	case DB:
 		if storage.RowExistsDB("SELECT * FROM urls WHERE short_url=$1", shortURL) {
 			fullURL = storage.GetURLDB("SELECT full_url FROM urls WHERE short_url = $1", shortURL)
+		} else {
+			w.Write([]byte("Full url is apsent"))
+			break
 		}
-		//else ТАКОЙ ССЫЛКИ НЕТ
 	case Memory:
-		fullURL, _ = urlMem.GetURLMem(shortURL)
+		fullURL, found = urlMem.GetURLMem(shortURL)
+		if !found {
+			w.Write([]byte("Full url is apsent"))
+			break
+		}
 	}
 
 	w.Write([]byte(fullURL))

@@ -14,9 +14,9 @@ var urlsTest = []url{
 }
 
 const (
-	host     = "127.0.0.1"
+	host     = "localhost"
 	port     = 5432
 	user     = "root"
 	password = "postgres"
-	dbname   = "root"
+	dbname   = "fintech"
 )

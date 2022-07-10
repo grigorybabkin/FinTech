@@ -2,7 +2,6 @@ package main
 
 import (
 	"FinTech/storage"
-	"flag"
 	"fmt"
 	_ "github.com/lib/pq"
 	"log"
@@ -27,20 +26,20 @@ var (
 
 func main() {
 
-	//cmdCorrect := false
-	//var internal string
+	cmdCorrect := false
+	var cmd string
 
 	http.HandleFunc("/", handler)
 	//fmt.Fprintln(os.Stdout,"Choose way to store urls")
 
-	/*for {
+	for {
 		fmt.Fprintln(os.Stdout, "enter one of these variants:")
 		fmt.Fprintln(os.Stdout, "->   DB or 1")
 		fmt.Fprintln(os.Stdout, "->   M  or 0")
 
-		fmt.Fscan(os.Stdin, &internal)
+		fmt.Fscan(os.Stdin, &cmd)
 
-		switch internal {
+		switch cmd {
 		case "DB", "1":
 			Storage = 1
 			cmdCorrect = true
@@ -54,16 +53,15 @@ func main() {
 			break
 		}
 	}
+
+	/*	storage := flag.Int("storage", 1, "Type of url storage")
+		Storage = *storage
+		switch Storage {
+		case 0:
+			fmt.Fprintln(os.Stdout, "URL storage is Memory")
+		default:
+			fmt.Fprintln(os.Stdout, "URL storage is DB")
+		}
 	*/
-
-	storage := flag.Int("storage", 1, "Type of url storage")
-	Storage = *storage
-	switch Storage {
-	case 0:
-		fmt.Fprintln(os.Stdout, "URL storage is Memory")
-	default:
-		fmt.Fprintln(os.Stdout, "URL storage is DB")
-	}
-
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

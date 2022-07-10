@@ -5,9 +5,9 @@ import "testing"
 func TestAddURLsDB(t *testing.T) {
 
 	for _, test := range urlsTest {
-		//		if !RowExistsDB("SELECT * FROM urls WHERE full_url=$1", test.fullURL) {
+		//if !RowExistsDB("SELECT * FROM urls WHERE full_url=$1", test.fullURL) {
 		AddURLsDB(test.fullURL, test.shortURL)
-		//		}
+		//}
 	}
 
 	for _, test := range urlsTest {
