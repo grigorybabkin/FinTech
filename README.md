@@ -15,8 +15,8 @@ FinTech
 │    ├── rand_url.go     
 │    └── rand_url_test.go
 │ 
-├── storage                         # пакет, содержащий функции для работы с данными (хранение ссылок)
-│      ├── database.go
+├── storage                         # пакет, содержащий функции для работы с данными 
+│      ├── database.go              # (хранение ссылок)
 │      ├── database_test.go    
 │      ├── ...
 │      └── memory_test.go
