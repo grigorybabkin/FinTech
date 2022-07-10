@@ -3,7 +3,7 @@
 [Docker Image](https://github.com/grigorybabkin/FinTech/pkgs/container/fintech%2Ffintech)
 
 ## Структура проекта
-
+```bash
 FinTech
 ├── internal                     
 │       └── main                    # содержит обработчики запросов и файл main
@@ -22,7 +22,7 @@ FinTech
 │      └── memory_test.go
 ├── ...
 └── README.md
-
+```
 ### Установка
 ```bash
 docker pull ghcr.io/grigorybabkin/fintech/fintech:latest
